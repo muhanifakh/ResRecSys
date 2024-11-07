@@ -2,12 +2,13 @@
 ## Restaurant Recommendation System  
 
 **Arranged by:**  
-1. Reino Yuris Kusumanegara / 5025231075  
-2. Muhammad Hanif Fakhriansyah / 5025231082  
-3. Muhammad Rizqy Hidayat / 5025231161  
-4. Fazle Robby Pratama / 5025231011  
+| NRP        | Name                             |
+|------------|----------------------------------|
+| 5025231075 | Reino Yuris Kusumanegara         |
+| 5025231082 | Muhammad Hanif Fakhriansyah      |
+| 5025231161 | Muhammad Rizqy Hidayat           |
+| 5025231011 | Fazle Robby Pratama              |
 
-[Github repository link]
 
 ---
 
