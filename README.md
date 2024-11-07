@@ -120,7 +120,6 @@ This visualization provides users with a comprehensive map of their options, all
 
 ---
 
-![Map Visualization Example](path/to/map_visualization_image.png)
 
 This methodology allows us to deliver a balanced restaurant recommendation system with both simple (BFS) and preference-sensitive (A*) algorithms, enhancing the usability and efficiency of the recommendation process.
 
