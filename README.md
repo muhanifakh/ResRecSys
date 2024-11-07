@@ -36,10 +36,9 @@ We use two search algorithms to prioritize different aspects of the user’s pre
   
   - **Distance Sorting**: Restaurants are sorted by proximity to the user’s location, and BFS stops after finding five restaurants within the maximum distance threshold.
 
-<div style="display: flex;">
-  <img src="![Screenshot 2024-11-07 205305](https://github.com/user-attachments/assets/eabff204-a5b0-4080-a8d9-7b5a1c5584d1)" alt="BFS Result" width="45%" style="margin-right: 10px;">
-  <img src="![Screenshot 2024-11-07 205401](https://github.com/user-attachments/assets/2bab137f-e7ab-4157-aea7-a186f35af3ad)" alt="A* Result" width="45%">
-</div>
+  ![Screenshot 2024-11-07 205305](https://github.com/user-attachments/assets/eabff204-a5b0-4080-a8d9-7b5a1c5584d1)
+  ![Screenshot 2024-11-07 205401](https://github.com/user-attachments/assets/2bab137f-e7ab-4157-aea7-a186f35af3ad)
+
 
 The difference in these approaches allows us to cater to both general proximity-based recommendations (using BFS) and refined, preference-driven recommendations (using A*).
 
@@ -68,6 +67,7 @@ To help users visualize their recommended restaurants and routes, we use **Foliu
 - **Routes**: Using the OSRM API, we display driving routes from the user’s location to each recommended restaurant, giving users a clear view of the travel paths.
 
 This visualization provides users with a comprehensive map of their options, allowing them to better understand the spatial relationships between their location and recommended restaurants.
+![Screenshot 2024-11-07 205540](https://github.com/user-attachments/assets/1eb2449e-b9af-45c8-abbd-de7666b6a1ae)
 
 ---
 
