@@ -11,13 +11,13 @@
 
 ---
 
-### Introduction
+# Introduction
 
 In today's fast-paced world, deciding where to eat can often be a time-consuming process. Whether it's choosing between different types of cuisine, balancing budget constraints, or finding a location that's convenient for everyone, the challenge of picking a restaurant that satisfies all criteria can become overwhelming. To address this issue, we propose a Restaurant Recommendation System that utilizes advanced search algorithms to provide personalized, optimal restaurant suggestions based on user preferences, location, and other key factors. By leveraging methods such as informed search, local search, and constraint satisfaction, this system aims to simplify the decision-making process, delivering recommendations that are both efficient and tailored to individual or group needs.
 
 ---
 
-### Background and Problem Statement
+# Background and Problem Statement
 
 When individuals or groups plan to eat out, there will always be debates in choosing where they want to eat due to the varying preferences of each individual. They must also consider constraints such as budget, approximate cost, travel distance, operational hours, and more. The abundance of restaurant options combined with limited time and varying preferences creates this problem.
 
@@ -33,7 +33,7 @@ This recommendation system aims to solve this problem by offering restaurant opt
 
 ---
 
-### Uniqueness
+# Uniqueness
 
 1. **Distance and Time Efficiency**  
    By leveraging search algorithms like A* search, the system can prioritize nearby restaurants that minimize travel time, which is crucial for users with limited time, such as lunch breaks. It ensures that the recommendation not only fits the food preferences but also accounts for time efficiency.
