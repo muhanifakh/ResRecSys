@@ -3,7 +3,6 @@ import folium  # for map
 import requests
 import math  # for calculations
 from collections import deque  # for queue
-import random
 import time  # for measuring execution time
 
 def calculate_distance(loc1, loc2):
