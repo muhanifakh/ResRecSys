@@ -8,11 +8,11 @@ import time  # for measuring execution time
 def calculate_distance(loc1, loc2):
     return math.sqrt((loc1[0] - loc2[0])**2 + (loc1[1] - loc2[1])**2) * 111  # 1 degree ≈ 111 km
 
-# Function to check if the restaurant is within budget based on the maximum price
+# Function to check if the restaurant is within budget based on the maximum price 
 def check_budget(price_range, budget):
     price_range = price_range.replace("Rp", "").replace(".", "").replace("–", "-").split("-")
     max_price = int(price_range[1])  # only check the maximum price in the range
-    return max_price <= budget
+    return max_price <= budget 
 
 # Heuristic function: penalize if below preferred rating
 def heuristic(restaurant, preferred_rating):
@@ -21,7 +21,6 @@ def heuristic(restaurant, preferred_rating):
     return rating_score
 
 # Modified A* search to prioritize by rating first, then distance, and add budget check
-# Modified A* search with timing for each restaurant
 def a_star_search(user_location, restaurants, preferred_rating, max_distance, budget):
     # Step 1: Filter restaurants by preferred rating and budget, and sort by rating descending
     filtered_restaurants = sorted(
@@ -68,7 +67,7 @@ def a_star_search(user_location, restaurants, preferred_rating, max_distance, bu
             new_path = path + [restaurant]
             heapq.heappush(queue, (f_cost, restaurant["location"], new_path, g_cost + distance))
 
-    return best_restaurants, search_times
+    return best_restaurants, search_times   
 
 # BFS search function to prioritize only distance 
 def bfs(user_location, restaurants):
@@ -99,7 +98,9 @@ def bfs(user_location, restaurants):
 
 # User input
 priority = input("Pilih prioritas pencarian (rating/distance): ").lower()
-user_location = (-7.280259, 112.770598)
+# user_location = (-7.280259, 112.770598)
+user_location = (-7.3106582, 112.7805261)
+# user_location = (-7.281809553902511, 112.79499226081437)
 min_rating = float(input("Masukkan rating minimal (contoh: 4.5): "))
 max_distance = float(input("Masukkan jarak maksimal yang mau ditempuh (dalam km, contoh: 5): "))
 budget = int(input("Masukkan budget maksimal dalam ribuan (contoh: 100 untuk Rp100.000): ")) * 1000
@@ -157,7 +158,7 @@ restaurants = [
     {"name": "Depot Bu Rudy Dharmahusada", "location": (-7.267177982389897, 112.7701808259778), "rating": 4.5, "price_range": "Rp25.000-50.000"},
     {"name": "Ayam Goreng Ny. Suharti Gubeng", "location": (-7.276101086399509, 112.74571771063307), "rating": 4.5, "price_range": "Rp25.000-50.000"},
     {"name": "Cold 'N Brew Gubeng", "location": (-7.274398, 112.748321), "rating": 4.6, "price_range": "Rp25.000-50.000"},
-     {"name": "Bebek Palupi Rungkut", "location": (-7.321966947550001, 112.77425382961697), "rating": 4.6, "price_range": "Rp 25.000-50.000"},
+    {"name": "Bebek Palupi Rungkut", "location": (-7.321966947550001, 112.77425382961697), "rating": 4.6, "price_range": "Rp 25.000-50.000"},
     {"name": "Waroeng Joglo Merah Putih", "location": (-7.342019389882795, 112.7855831591145), "rating": 4.5, "price_range": "Rp 25.000-50.000"},
     {"name": "Hotway's Chicken Surabaya Tenggilis", "location": (-7.318634917261419, 112.76300964129706), "rating": 4.6, "price_range": "Rp 25.000-50.000"},
     {"name": "Wizzmie Jemursari", "location": (-7.3105471999980915, 112.75732966613614), "rating": 4.8, "price_range": "Rp 25.000-50.000"},
@@ -209,14 +210,22 @@ restaurants = [
     {"name": "Thirty Bumbu by Chop Buntut Surabaya", "location": (-7.277821602206137, 112.76537657941401), "rating": 4.6, "price_range": "Rp50.000-75.000"},
 ]
 
+search_times = []
 
 if priority == "rating":
+    start_time = time.time()  
     best_restaurants, search_times = a_star_search(user_location, restaurants, min_rating, max_distance, budget)
+    end_time = time.time()  
 elif priority == "distance":
+    start_time = time.time()  
     best_restaurants, search_times = bfs(user_location, restaurants)
+    end_time = time.time()  
 else:
     print("Prioritas tidak valid. Pilih 'rating' atau 'distance'.")
     best_restaurants, search_times = [], []
+    
+# Calculate the total execution time for the search
+total_execution_time = end_time - start_time
 
 # Sort the best_restaurants by rating in descending order before printing
 best_restaurants.sort(key=lambda x: x['rating'], reverse=True)
@@ -226,12 +235,16 @@ print("\n5 Restoran Terbaik Berdasarkan Preferensi Anda:")
 for idx, restaurant in enumerate(best_restaurants, start=1):
     print(f"{idx}. {restaurant['name']} - Rating: {restaurant['rating']}, Price: {restaurant['price_range']}")
 
+# Output individual search times for each restaurant
 print("\nWaktu pencarian untuk masing-masing restoran:")
 for restaurant_name, time_taken in search_times:
     print(f"{restaurant_name}: {time_taken:.10f} seconds")
 
+# Print the total execution time
+print(f"\nTotal Execution Time: {total_execution_time:.10f} seconds")
+
 # Create a map centered at the user's location (map code remains unchanged)
-map_user = folium.Map(location=user_location, zoom_start=14)
+map_user = folium.Map(location=user_location, zoom_start=14)    
 folium.Marker(location=user_location, popup="You are here", icon=folium.Icon(color="blue", icon="user")).add_to(map_user)
 
 for restaurant in restaurants:
